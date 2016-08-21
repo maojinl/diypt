@@ -1,0 +1,905 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="diyptModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="diyptModelStoreContainer">
+    <EntitySet Name="MemberExercisePlans" EntityType="diyptModel.Store.MemberExercisePlans" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MemberExercisePlanWeeks" EntityType="diyptModel.Store.MemberExercisePlanWeeks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrizeExerciseDayTimeTypes" EntityType="diyptModel.Store.PrizeExerciseDayTimeTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrizeExercisePlans" EntityType="diyptModel.Store.PrizeExercisePlans" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrizeExercisePlanWeeks" EntityType="diyptModel.Store.PrizeExercisePlanWeeks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrizeExerciseUnits" EntityType="diyptModel.Store.PrizeExerciseUnits" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrizeExerciseUnitSetForDays" EntityType="diyptModel.Store.PrizeExerciseUnitSetForDays" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrizeExerciseUnitSetNames" EntityType="diyptModel.Store.PrizeExerciseUnitSetNames" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrizeExerciseUnitSets" EntityType="diyptModel.Store.PrizeExerciseUnitSets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrizeFoodPlans" EntityType="diyptModel.Store.PrizeFoodPlans" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrizeMemberLogs" EntityType="diyptModel.Store.PrizeMemberLogs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrizeMembers" EntityType="diyptModel.Store.PrizeMembers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrizePlanExperiences" EntityType="diyptModel.Store.PrizePlanExperiences" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrizePlanLevels" EntityType="diyptModel.Store.PrizePlanLevels" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrizePlanLocations" EntityType="diyptModel.Store.PrizePlanLocations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrizePlanPrograms" EntityType="diyptModel.Store.PrizePlanPrograms" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_PrizeMemberLog_MemberExercisePlan" Association="diyptModel.Store.FK_PrizeMemberLog_MemberExercisePlan">
+      <End Role="MemberExercisePlanWeek" EntitySet="MemberExercisePlanWeeks" />
+      <End Role="PrizeMemberLog" EntitySet="PrizeMemberLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrizeExercisePlan_PrizePlanProgram" Association="diyptModel.Store.FK_PrizeExercisePlan_PrizePlanProgram">
+      <End Role="PrizePlanProgram" EntitySet="PrizePlanPrograms" />
+      <End Role="PrizeExercisePlan" EntitySet="PrizeExercisePlans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrizeExercisePlanWeek_PrizeExercisePlan" Association="diyptModel.Store.FK_PrizeExercisePlanWeek_PrizeExercisePlan">
+      <End Role="PrizeExercisePlan" EntitySet="PrizeExercisePlans" />
+      <End Role="PrizeExercisePlanWeek" EntitySet="PrizeExercisePlanWeeks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrizeExercisePlanWeek_PrizeFoodPlan" Association="diyptModel.Store.FK_PrizeExercisePlanWeek_PrizeFoodPlan">
+      <End Role="PrizeFoodPlan" EntitySet="PrizeFoodPlans" />
+      <End Role="PrizeExercisePlanWeek" EntitySet="PrizeExercisePlanWeeks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrizeMemberLog_PrizeMember" Association="diyptModel.Store.FK_PrizeMemberLog_PrizeMember">
+      <End Role="PrizeMember" EntitySet="PrizeMembers" />
+      <End Role="PrizeMemberLog" EntitySet="PrizeMemberLogs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="MemberExercisePlans">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MemberId" Type="int" Nullable="true" />
+    <Property Name="ExercisePlanId" Type="int" Nullable="true" />
+    <Property Name="Status" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="StartDate" Type="datetime" Nullable="true" />
+    <Property Name="StartWeight" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="StartWaist" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="StartBodyFat" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="EndDate" Type="datetime" Nullable="true" />
+    <Property Name="EndWeight" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="EndWaist" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="EndBodyFat" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="MemberExercisePlanWeeks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MemberId" Type="int" Nullable="true" />
+    <Property Name="ExercisePlanId" Type="int" Nullable="true" />
+    <Property Name="Status" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="StartDate" Type="datetime" Nullable="true" />
+    <Property Name="StartWeight" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="StartWaist" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="StartBodyFat" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="EndDate" Type="datetime" Nullable="true" />
+    <Property Name="EndWeight" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="EndWaist" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="EndBodyFat" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="ExercisePlanWeekId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PrizeExerciseDayTimeTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="DayTimeTypeName" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DayTimeTypeName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Image" Type="varchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="PrizeExercisePlans">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlanName" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="varchar(max)" Nullable="true" />
+    <Property Name="ProgramId" Type="int" Nullable="false" />
+    <Property Name="LocationId" Type="int" Nullable="false" />
+    <Property Name="ExperienceId" Type="int" Nullable="false" />
+    <Property Name="LevelId" Type="int" Nullable="false" />
+    <Property Name="childPlanId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PrizeExercisePlanWeeks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrizeExercisePlanId" Type="int" Nullable="true" />
+    <Property Name="PrizeFoodPlanId" Type="int" Nullable="true" />
+    <Property Name="Week" Type="int" Nullable="true" />
+    <Property Name="ExerciseDay1" Type="varchar(max)" Nullable="true" />
+    <Property Name="ExerciseDay2" Type="varchar(max)" Nullable="true" />
+    <Property Name="ExerciseDay3" Type="varchar(max)" Nullable="true" />
+    <Property Name="ExerciseDay4" Type="varchar(max)" Nullable="true" />
+    <Property Name="ExerciseDay5" Type="varchar(max)" Nullable="true" />
+    <Property Name="ExerciseDay6" Type="varchar(max)" Nullable="true" />
+    <Property Name="ExerciseDay7" Type="varchar(max)" Nullable="true" />
+    <Property Name="Description" Type="varchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PrizeExerciseUnits">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Exercise" Type="varchar(max)" Nullable="true" />
+    <Property Name="Reps" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="Rest" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="Weight" Type="varchar(max)" Nullable="true" />
+    <Property Name="Comments" Type="varchar(max)" Nullable="true" />
+    <Property Name="UnitOrder" Type="int" Nullable="true" />
+    <Property Name="Tempo" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="Trainning_Set" Type="varchar" Nullable="true" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="PrizeExerciseUnitSetForDays">
+    <Key>
+      <PropertyRef Name="PrizeExercisePlanWeekId" />
+      <PropertyRef Name="ExerciseDay" />
+      <PropertyRef Name="PrizeExerciseUnitSetNameId" />
+      <PropertyRef Name="DayTimeTypeId" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrizeExercisePlanWeekId" Type="int" Nullable="false" />
+    <Property Name="ExerciseDay" Type="int" Nullable="false" />
+    <Property Name="PrizeExerciseUnitSetNameId" Type="int" Nullable="false" />
+    <Property Name="DayTimeTypeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PrizeExerciseUnitSetNames">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="UnitSetName" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UnitSetName" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PrizeExerciseUnitSets">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="UnitSetNameId" />
+      <PropertyRef Name="PrizeExerciseUnitId" />
+      <PropertyRef Name="Sequence" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UnitSetNameId" Type="int" Nullable="false" />
+    <Property Name="PrizeExerciseUnitId" Type="int" Nullable="false" />
+    <Property Name="Sequence" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PrizeFoodPlans">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlanName" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="varchar(max)" Nullable="true" />
+    <Property Name="FoodDay1" Type="varchar(max)" Nullable="false" />
+    <Property Name="FoodDay2" Type="varchar(max)" Nullable="false" />
+    <Property Name="FoodDay3" Type="varchar(max)" Nullable="false" />
+    <Property Name="FoodDay4" Type="varchar(max)" Nullable="false" />
+    <Property Name="FoodDay5" Type="varchar(max)" Nullable="false" />
+    <Property Name="FoodDay6" Type="varchar(max)" Nullable="false" />
+    <Property Name="FoodDay7" Type="varchar(max)" Nullable="false" />
+    <Property Name="Weeks" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="ProgramId" Type="int" Nullable="true" />
+    <Property Name="LocationId" Type="int" Nullable="true" />
+    <Property Name="ExperienceId" Type="int" Nullable="true" />
+    <Property Name="LevelId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PrizeMemberLogs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MemberId" Type="int" Nullable="true" />
+    <Property Name="MemberExercisePlanId" Type="int" Nullable="true" />
+    <Property Name="LogDate" Type="datetime" Nullable="true" />
+    <Property Name="Weight" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="Waist" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="BodyFat" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="PhotoUrl" Type="varchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PrizeMembers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UmbracoId" Type="int" Nullable="true" />
+    <Property Name="Firstname" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="Surname" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="DoB" Type="datetime" Nullable="true" />
+    <Property Name="Gender" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="Country" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="Email" Type="varchar(max)" Nullable="true" />
+    <Property Name="StreetAddress" Type="varchar(max)" Nullable="true" />
+    <Property Name="Suburb" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="City" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="Postcode" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="State" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="Height" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="Weight" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="Password" Type="varchar" Nullable="true" MaxLength="255" />
+    <Property Name="Waist" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="BodyFat" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="GoalDescription" Type="varchar(max)" Nullable="true" />
+    <Property Name="GoalWeight" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="GoalWaist" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="GoalBodyFat" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="PrizePlanExperiences">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="varchar(max)" Nullable="true" />
+    <Property Name="Sequence" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PrizePlanLevels">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="varchar(max)" Nullable="true" />
+    <Property Name="Sequence" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PrizePlanLocations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="varchar(max)" Nullable="true" />
+    <Property Name="Sequence" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PrizePlanPrograms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="varchar(max)" Nullable="true" />
+    <Property Name="Sequence" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_PrizeMemberLog_MemberExercisePlan">
+    <End Role="MemberExercisePlanWeek" Type="diyptModel.Store.MemberExercisePlanWeeks" Multiplicity="0..1" />
+    <End Role="PrizeMemberLog" Type="diyptModel.Store.PrizeMemberLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberExercisePlanWeek">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrizeMemberLog">
+        <PropertyRef Name="MemberExercisePlanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrizeExercisePlan_PrizePlanProgram">
+    <End Role="PrizePlanProgram" Type="diyptModel.Store.PrizePlanPrograms" Multiplicity="1" />
+    <End Role="PrizeExercisePlan" Type="diyptModel.Store.PrizeExercisePlans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrizePlanProgram">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrizeExercisePlan">
+        <PropertyRef Name="ProgramId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrizeExercisePlanWeek_PrizeExercisePlan">
+    <End Role="PrizeExercisePlan" Type="diyptModel.Store.PrizeExercisePlans" Multiplicity="0..1" />
+    <End Role="PrizeExercisePlanWeek" Type="diyptModel.Store.PrizeExercisePlanWeeks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrizeExercisePlan">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrizeExercisePlanWeek">
+        <PropertyRef Name="PrizeExercisePlanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrizeExercisePlanWeek_PrizeFoodPlan">
+    <End Role="PrizeFoodPlan" Type="diyptModel.Store.PrizeFoodPlans" Multiplicity="0..1" />
+    <End Role="PrizeExercisePlanWeek" Type="diyptModel.Store.PrizeExercisePlanWeeks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrizeFoodPlan">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrizeExercisePlanWeek">
+        <PropertyRef Name="PrizeFoodPlanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrizeMemberLog_PrizeMember">
+    <End Role="PrizeMember" Type="diyptModel.Store.PrizeMembers" Multiplicity="0..1" />
+    <End Role="PrizeMemberLog" Type="diyptModel.Store.PrizeMemberLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrizeMember">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PrizeMemberLog">
+        <PropertyRef Name="MemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="diyptModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DIYPTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MemberExercisePlans" EntityType="diyptModel.MemberExercisePlan" />
+          <EntitySet Name="MemberExercisePlanWeeks" EntityType="diyptModel.MemberExercisePlanWeek" />
+          <EntitySet Name="PrizeExerciseDayTimeTypes" EntityType="diyptModel.PrizeExerciseDayTimeType" />
+          <EntitySet Name="PrizeExercisePlans" EntityType="diyptModel.PrizeExercisePlan" />
+          <EntitySet Name="PrizeExercisePlanWeeks" EntityType="diyptModel.PrizeExercisePlanWeek" />
+          <EntitySet Name="PrizeExerciseUnits" EntityType="diyptModel.PrizeExerciseUnit" />
+          <EntitySet Name="PrizeExerciseUnitSetForDays" EntityType="diyptModel.PrizeExerciseUnitSetForDay" />
+          <EntitySet Name="PrizeExerciseUnitSetNames" EntityType="diyptModel.PrizeExerciseUnitSetName" />
+          <EntitySet Name="PrizeExerciseUnitSets" EntityType="diyptModel.PrizeExerciseUnitSet" />
+          <EntitySet Name="PrizeFoodPlans" EntityType="diyptModel.PrizeFoodPlan" />
+          <EntitySet Name="PrizeMemberLogs" EntityType="diyptModel.PrizeMemberLog" />
+          <EntitySet Name="PrizeMembers" EntityType="diyptModel.PrizeMember" />
+          <EntitySet Name="PrizePlanExperiences" EntityType="diyptModel.PrizePlanExperience" />
+          <EntitySet Name="PrizePlanLevels" EntityType="diyptModel.PrizePlanLevel" />
+          <EntitySet Name="PrizePlanLocations" EntityType="diyptModel.PrizePlanLocation" />
+          <EntitySet Name="PrizePlanPrograms" EntityType="diyptModel.PrizePlanProgram" />
+          <AssociationSet Name="FK_PrizeMemberLog_MemberExercisePlan" Association="diyptModel.FK_PrizeMemberLog_MemberExercisePlan">
+            <End Role="MemberExercisePlanWeek" EntitySet="MemberExercisePlanWeeks" />
+            <End Role="PrizeMemberLog" EntitySet="PrizeMemberLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrizeExercisePlan_PrizePlanProgram" Association="diyptModel.FK_PrizeExercisePlan_PrizePlanProgram">
+            <End Role="PrizePlanProgram" EntitySet="PrizePlanPrograms" />
+            <End Role="PrizeExercisePlan" EntitySet="PrizeExercisePlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrizeExercisePlanWeek_PrizeExercisePlan" Association="diyptModel.FK_PrizeExercisePlanWeek_PrizeExercisePlan">
+            <End Role="PrizeExercisePlan" EntitySet="PrizeExercisePlans" />
+            <End Role="PrizeExercisePlanWeek" EntitySet="PrizeExercisePlanWeeks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrizeExercisePlanWeek_PrizeFoodPlan" Association="diyptModel.FK_PrizeExercisePlanWeek_PrizeFoodPlan">
+            <End Role="PrizeFoodPlan" EntitySet="PrizeFoodPlans" />
+            <End Role="PrizeExercisePlanWeek" EntitySet="PrizeExercisePlanWeeks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrizeMemberLog_PrizeMember" Association="diyptModel.FK_PrizeMemberLog_PrizeMember">
+            <End Role="PrizeMember" EntitySet="PrizeMembers" />
+            <End Role="PrizeMemberLog" EntitySet="PrizeMemberLogs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="MemberExercisePlan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" />
+          <Property Name="ExercisePlanId" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="StartWeight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="StartWaist" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="StartBodyFat" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="EndWeight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EndWaist" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EndBodyFat" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="MemberExercisePlanWeek">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" />
+          <Property Name="ExercisePlanId" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="StartWeight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="StartWaist" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="StartBodyFat" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="EndWeight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EndWaist" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EndBodyFat" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ExercisePlanWeekId" Type="Int32" />
+          <NavigationProperty Name="PrizeMemberLogs" Relationship="diyptModel.FK_PrizeMemberLog_MemberExercisePlan" FromRole="MemberExercisePlanWeek" ToRole="PrizeMemberLog" />
+        </EntityType>
+        <EntityType Name="PrizeExerciseDayTimeType">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="DayTimeTypeName" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DayTimeTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PrizeExercisePlan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlanName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProgramId" Type="Int32" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="ExperienceId" Type="Int32" Nullable="false" />
+          <Property Name="LevelId" Type="Int32" Nullable="false" />
+          <Property Name="childPlanId" Type="Int32" />
+          <NavigationProperty Name="PrizePlanProgram" Relationship="diyptModel.FK_PrizeExercisePlan_PrizePlanProgram" FromRole="PrizeExercisePlan" ToRole="PrizePlanProgram" />
+          <NavigationProperty Name="PrizeExercisePlanWeeks" Relationship="diyptModel.FK_PrizeExercisePlanWeek_PrizeExercisePlan" FromRole="PrizeExercisePlan" ToRole="PrizeExercisePlanWeek" />
+        </EntityType>
+        <EntityType Name="PrizeExercisePlanWeek">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrizeExercisePlanId" Type="Int32" />
+          <Property Name="PrizeFoodPlanId" Type="Int32" />
+          <Property Name="Week" Type="Int32" />
+          <Property Name="ExerciseDay1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExerciseDay2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExerciseDay3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExerciseDay4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExerciseDay5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExerciseDay6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExerciseDay7" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PrizeExercisePlan" Relationship="diyptModel.FK_PrizeExercisePlanWeek_PrizeExercisePlan" FromRole="PrizeExercisePlanWeek" ToRole="PrizeExercisePlan" />
+          <NavigationProperty Name="PrizeFoodPlan" Relationship="diyptModel.FK_PrizeExercisePlanWeek_PrizeFoodPlan" FromRole="PrizeExercisePlanWeek" ToRole="PrizeFoodPlan" />
+        </EntityType>
+        <EntityType Name="PrizeExerciseUnit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Exercise" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Reps" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Rest" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Weight" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UnitOrder" Type="Int32" />
+          <Property Name="Tempo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Trainning_Set" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PrizeExerciseUnitSetForDay">
+          <Key>
+            <PropertyRef Name="PrizeExercisePlanWeekId" />
+            <PropertyRef Name="ExerciseDay" />
+            <PropertyRef Name="PrizeExerciseUnitSetNameId" />
+            <PropertyRef Name="DayTimeTypeId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrizeExercisePlanWeekId" Type="Int32" Nullable="false" />
+          <Property Name="ExerciseDay" Type="Int32" Nullable="false" />
+          <Property Name="PrizeExerciseUnitSetNameId" Type="Int32" Nullable="false" />
+          <Property Name="DayTimeTypeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrizeExerciseUnitSetName">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UnitSetName" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitSetName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PrizeExerciseUnitSet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UnitSetNameId" />
+            <PropertyRef Name="PrizeExerciseUnitId" />
+            <PropertyRef Name="Sequence" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitSetNameId" Type="Int32" Nullable="false" />
+          <Property Name="PrizeExerciseUnitId" Type="Int32" Nullable="false" />
+          <Property Name="Sequence" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrizeFoodPlan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlanName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FoodDay1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FoodDay2" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FoodDay3" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FoodDay4" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FoodDay5" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FoodDay6" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FoodDay7" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Weeks" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ProgramId" Type="Int32" />
+          <Property Name="LocationId" Type="Int32" />
+          <Property Name="ExperienceId" Type="Int32" />
+          <Property Name="LevelId" Type="Int32" />
+          <NavigationProperty Name="PrizeExercisePlanWeeks" Relationship="diyptModel.FK_PrizeExercisePlanWeek_PrizeFoodPlan" FromRole="PrizeFoodPlan" ToRole="PrizeExercisePlanWeek" />
+        </EntityType>
+        <EntityType Name="PrizeMemberLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" />
+          <Property Name="MemberExercisePlanId" Type="Int32" />
+          <Property Name="LogDate" Type="DateTime" Precision="3" />
+          <Property Name="Weight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Waist" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BodyFat" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PhotoUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MemberExercisePlanWeek" Relationship="diyptModel.FK_PrizeMemberLog_MemberExercisePlan" FromRole="PrizeMemberLog" ToRole="MemberExercisePlanWeek" />
+          <NavigationProperty Name="PrizeMember" Relationship="diyptModel.FK_PrizeMemberLog_PrizeMember" FromRole="PrizeMemberLog" ToRole="PrizeMember" />
+        </EntityType>
+        <EntityType Name="PrizeMember">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UmbracoId" Type="Int32" />
+          <Property Name="Firstname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DoB" Type="DateTime" Precision="3" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StreetAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Suburb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Postcode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Height" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Weight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Waist" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BodyFat" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GoalDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GoalWeight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GoalWaist" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GoalBodyFat" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="PrizeMemberLogs" Relationship="diyptModel.FK_PrizeMemberLog_PrizeMember" FromRole="PrizeMember" ToRole="PrizeMemberLog" />
+        </EntityType>
+        <EntityType Name="PrizePlanExperience">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sequence" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrizePlanLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sequence" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrizePlanLocation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sequence" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrizePlanProgram">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sequence" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PrizeExercisePlans" Relationship="diyptModel.FK_PrizeExercisePlan_PrizePlanProgram" FromRole="PrizePlanProgram" ToRole="PrizeExercisePlan" />
+        </EntityType>
+        <Association Name="FK_PrizeMemberLog_MemberExercisePlan">
+          <End Type="diyptModel.MemberExercisePlanWeek" Role="MemberExercisePlanWeek" Multiplicity="0..1" />
+          <End Type="diyptModel.PrizeMemberLog" Role="PrizeMemberLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MemberExercisePlanWeek">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrizeMemberLog">
+              <PropertyRef Name="MemberExercisePlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrizeExercisePlan_PrizePlanProgram">
+          <End Type="diyptModel.PrizePlanProgram" Role="PrizePlanProgram" Multiplicity="1" />
+          <End Type="diyptModel.PrizeExercisePlan" Role="PrizeExercisePlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrizePlanProgram">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrizeExercisePlan">
+              <PropertyRef Name="ProgramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrizeExercisePlanWeek_PrizeExercisePlan">
+          <End Type="diyptModel.PrizeExercisePlan" Role="PrizeExercisePlan" Multiplicity="0..1" />
+          <End Type="diyptModel.PrizeExercisePlanWeek" Role="PrizeExercisePlanWeek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrizeExercisePlan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrizeExercisePlanWeek">
+              <PropertyRef Name="PrizeExercisePlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrizeExercisePlanWeek_PrizeFoodPlan">
+          <End Type="diyptModel.PrizeFoodPlan" Role="PrizeFoodPlan" Multiplicity="0..1" />
+          <End Type="diyptModel.PrizeExercisePlanWeek" Role="PrizeExercisePlanWeek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrizeFoodPlan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrizeExercisePlanWeek">
+              <PropertyRef Name="PrizeFoodPlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrizeMemberLog_PrizeMember">
+          <End Type="diyptModel.PrizeMember" Role="PrizeMember" Multiplicity="0..1" />
+          <End Type="diyptModel.PrizeMemberLog" Role="PrizeMemberLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrizeMember">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrizeMemberLog">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="diyptModelStoreContainer" CdmEntityContainer="DIYPTEntities">
+    <EntitySetMapping Name="MemberExercisePlans">
+      <EntityTypeMapping TypeName="IsTypeOf(diyptModel.MemberExercisePlan)">
+        <MappingFragment StoreEntitySet="MemberExercisePlans">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="ExercisePlanId" ColumnName="ExercisePlanId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="StartWeight" ColumnName="StartWeight" />
+          <ScalarProperty Name="StartWaist" ColumnName="StartWaist" />
+          <ScalarProperty Name="StartBodyFat" ColumnName="StartBodyFat" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="EndWeight" ColumnName="EndWeight" />
+          <ScalarProperty Name="EndWaist" ColumnName="EndWaist" />
+          <ScalarProperty Name="EndBodyFat" ColumnName="EndBodyFat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberExercisePlanWeeks">
+      <EntityTypeMapping TypeName="IsTypeOf(diyptModel.MemberExercisePlanWeek)">
+        <MappingFragment StoreEntitySet="MemberExercisePlanWeeks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="ExercisePlanId" ColumnName="ExercisePlanId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="StartWeight" ColumnName="StartWeight" />
+          <ScalarProperty Name="StartWaist" ColumnName="StartWaist" />
+          <ScalarProperty Name="StartBodyFat" ColumnName="StartBodyFat" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="EndWeight" ColumnName="EndWeight" />
+          <ScalarProperty Name="EndWaist" ColumnName="EndWaist" />
+          <ScalarProperty Name="EndBodyFat" ColumnName="EndBodyFat" />
+          <ScalarProperty Name="ExercisePlanWeekId" ColumnName="ExercisePlanWeekId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrizeExerciseDayTimeTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(diyptModel.PrizeExerciseDayTimeType)">
+        <MappingFragment StoreEntitySet="PrizeExerciseDayTimeTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DayTimeTypeName" ColumnName="DayTimeTypeName" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrizeExercisePlans">
+      <EntityTypeMapping TypeName="IsTypeOf(diyptModel.PrizeExercisePlan)">
+        <MappingFragment StoreEntitySet="PrizeExercisePlans">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PlanName" ColumnName="PlanName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+          <ScalarProperty Name="ExperienceId" ColumnName="ExperienceId" />
+          <ScalarProperty Name="LevelId" ColumnName="LevelId" />
+          <ScalarProperty Name="childPlanId" ColumnName="childPlanId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrizeExercisePlanWeeks">
+      <EntityTypeMapping TypeName="IsTypeOf(diyptModel.PrizeExercisePlanWeek)">
+        <MappingFragment StoreEntitySet="PrizeExercisePlanWeeks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PrizeExercisePlanId" ColumnName="PrizeExercisePlanId" />
+          <ScalarProperty Name="PrizeFoodPlanId" ColumnName="PrizeFoodPlanId" />
+          <ScalarProperty Name="Week" ColumnName="Week" />
+          <ScalarProperty Name="ExerciseDay1" ColumnName="ExerciseDay1" />
+          <ScalarProperty Name="ExerciseDay2" ColumnName="ExerciseDay2" />
+          <ScalarProperty Name="ExerciseDay3" ColumnName="ExerciseDay3" />
+          <ScalarProperty Name="ExerciseDay4" ColumnName="ExerciseDay4" />
+          <ScalarProperty Name="ExerciseDay5" ColumnName="ExerciseDay5" />
+          <ScalarProperty Name="ExerciseDay6" ColumnName="ExerciseDay6" />
+          <ScalarProperty Name="ExerciseDay7" ColumnName="ExerciseDay7" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrizeExerciseUnits">
+      <EntityTypeMapping TypeName="IsTypeOf(diyptModel.PrizeExerciseUnit)">
+        <MappingFragment StoreEntitySet="PrizeExerciseUnits">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Exercise" ColumnName="Exercise" />
+          <ScalarProperty Name="Reps" ColumnName="Reps" />
+          <ScalarProperty Name="Rest" ColumnName="Rest" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="UnitOrder" ColumnName="UnitOrder" />
+          <ScalarProperty Name="Tempo" ColumnName="Tempo" />
+          <ScalarProperty Name="Trainning_Set" ColumnName="Trainning_Set" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrizeExerciseUnitSetForDays">
+      <EntityTypeMapping TypeName="IsTypeOf(diyptModel.PrizeExerciseUnitSetForDay)">
+        <MappingFragment StoreEntitySet="PrizeExerciseUnitSetForDays">
+          <ScalarProperty Name="PrizeExercisePlanWeekId" ColumnName="PrizeExercisePlanWeekId" />
+          <ScalarProperty Name="ExerciseDay" ColumnName="ExerciseDay" />
+          <ScalarProperty Name="PrizeExerciseUnitSetNameId" ColumnName="PrizeExerciseUnitSetNameId" />
+          <ScalarProperty Name="DayTimeTypeId" ColumnName="DayTimeTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrizeExerciseUnitSetNames">
+      <EntityTypeMapping TypeName="IsTypeOf(diyptModel.PrizeExerciseUnitSetName)">
+        <MappingFragment StoreEntitySet="PrizeExerciseUnitSetNames">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UnitSetName" ColumnName="UnitSetName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrizeExerciseUnitSets">
+      <EntityTypeMapping TypeName="IsTypeOf(diyptModel.PrizeExerciseUnitSet)">
+        <MappingFragment StoreEntitySet="PrizeExerciseUnitSets">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UnitSetNameId" ColumnName="UnitSetNameId" />
+          <ScalarProperty Name="PrizeExerciseUnitId" ColumnName="PrizeExerciseUnitId" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrizeFoodPlans">
+      <EntityTypeMapping TypeName="IsTypeOf(diyptModel.PrizeFoodPlan)">
+        <MappingFragment StoreEntitySet="PrizeFoodPlans">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PlanName" ColumnName="PlanName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="FoodDay1" ColumnName="FoodDay1" />
+          <ScalarProperty Name="FoodDay2" ColumnName="FoodDay2" />
+          <ScalarProperty Name="FoodDay3" ColumnName="FoodDay3" />
+          <ScalarProperty Name="FoodDay4" ColumnName="FoodDay4" />
+          <ScalarProperty Name="FoodDay5" ColumnName="FoodDay5" />
+          <ScalarProperty Name="FoodDay6" ColumnName="FoodDay6" />
+          <ScalarProperty Name="FoodDay7" ColumnName="FoodDay7" />
+          <ScalarProperty Name="Weeks" ColumnName="Weeks" />
+          <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+          <ScalarProperty Name="ExperienceId" ColumnName="ExperienceId" />
+          <ScalarProperty Name="LevelId" ColumnName="LevelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrizeMemberLogs">
+      <EntityTypeMapping TypeName="IsTypeOf(diyptModel.PrizeMemberLog)">
+        <MappingFragment StoreEntitySet="PrizeMemberLogs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="MemberExercisePlanId" ColumnName="MemberExercisePlanId" />
+          <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Waist" ColumnName="Waist" />
+          <ScalarProperty Name="BodyFat" ColumnName="BodyFat" />
+          <ScalarProperty Name="PhotoUrl" ColumnName="PhotoUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrizeMembers">
+      <EntityTypeMapping TypeName="IsTypeOf(diyptModel.PrizeMember)">
+        <MappingFragment StoreEntitySet="PrizeMembers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UmbracoId" ColumnName="UmbracoId" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="DoB" ColumnName="DoB" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+          <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Waist" ColumnName="Waist" />
+          <ScalarProperty Name="BodyFat" ColumnName="BodyFat" />
+          <ScalarProperty Name="GoalDescription" ColumnName="GoalDescription" />
+          <ScalarProperty Name="GoalWeight" ColumnName="GoalWeight" />
+          <ScalarProperty Name="GoalWaist" ColumnName="GoalWaist" />
+          <ScalarProperty Name="GoalBodyFat" ColumnName="GoalBodyFat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrizePlanExperiences">
+      <EntityTypeMapping TypeName="IsTypeOf(diyptModel.PrizePlanExperience)">
+        <MappingFragment StoreEntitySet="PrizePlanExperiences">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrizePlanLevels">
+      <EntityTypeMapping TypeName="IsTypeOf(diyptModel.PrizePlanLevel)">
+        <MappingFragment StoreEntitySet="PrizePlanLevels">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrizePlanLocations">
+      <EntityTypeMapping TypeName="IsTypeOf(diyptModel.PrizePlanLocation)">
+        <MappingFragment StoreEntitySet="PrizePlanLocations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrizePlanPrograms">
+      <EntityTypeMapping TypeName="IsTypeOf(diyptModel.PrizePlanProgram)">
+        <MappingFragment StoreEntitySet="PrizePlanPrograms">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

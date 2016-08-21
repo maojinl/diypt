@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9a55b63afc4541a7980fd843ca4cbf50" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="diyptModel.MemberExercisePlan" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="diyptModel.MemberExercisePlanWeek" Width="1.5" PointX="0.75" PointY="8" />
+        <EntityTypeShape EntityType="diyptModel.PrizeExerciseDayTimeType" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="diyptModel.PrizeExercisePlan" Width="1.5" PointX="8" PointY="1.375" />
+        <EntityTypeShape EntityType="diyptModel.PrizeExercisePlanWeek" Width="1.5" PointX="10.25" PointY="1" />
+        <EntityTypeShape EntityType="diyptModel.PrizeExerciseUnit" Width="1.5" PointX="4.75" PointY="9.75" />
+        <EntityTypeShape EntityType="diyptModel.PrizeExerciseUnitSetForDay" Width="1.5" PointX="10.75" PointY="5.75" />
+        <EntityTypeShape EntityType="diyptModel.PrizeExerciseUnitSetName" Width="1.5" PointX="6.75" PointY="10.75" />
+        <EntityTypeShape EntityType="diyptModel.PrizeExerciseUnitSet" Width="1.5" PointX="10.75" PointY="8.75" />
+        <EntityTypeShape EntityType="diyptModel.PrizeFoodPlan" Width="1.5" PointX="8" PointY="5.875" />
+        <EntityTypeShape EntityType="diyptModel.PrizeMemberLog" Width="1.5" PointX="3" PointY="2.375" />
+        <EntityTypeShape EntityType="diyptModel.PrizeMember" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="diyptModel.PrizePlanExperience" Width="1.5" PointX="8.75" PointY="11.75" />
+        <EntityTypeShape EntityType="diyptModel.PrizePlanLevel" Width="1.5" PointX="10.75" PointY="11.75" />
+        <EntityTypeShape EntityType="diyptModel.PrizePlanLocation" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="diyptModel.PrizePlanProgram" Width="1.5" PointX="5.75" PointY="1.875" />
+        <AssociationConnector Association="diyptModel.FK_PrizeMemberLog_MemberExercisePlan" />
+        <AssociationConnector Association="diyptModel.FK_PrizeExercisePlan_PrizePlanProgram" />
+        <AssociationConnector Association="diyptModel.FK_PrizeExercisePlanWeek_PrizeExercisePlan" />
+        <AssociationConnector Association="diyptModel.FK_PrizeExercisePlanWeek_PrizeFoodPlan" />
+        <AssociationConnector Association="diyptModel.FK_PrizeMemberLog_PrizeMember" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
